@@ -1,6 +1,3 @@
-/*
- * Copyright (C) CredaRate Solutions GmbH
- */
 package org.example;
 
 import java.io.*;
@@ -60,5 +57,6 @@ public class Day1 {
     }
 
 }
+
 
 

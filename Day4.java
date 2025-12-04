@@ -13,8 +13,7 @@ public class Day4 {
     }
 
     static char[][] arr;
-    static long changed = -1;
-
+    
     static long day4Prob1() {
         long count = 0;
         fillArr();
@@ -32,34 +31,28 @@ public class Day4 {
     }
 
 
-    static long day4Prob2() {
-        long countThisIteration = 0;
-        fillArr();
-        boolean flag = false;
-        while (!flag) {
-            for (int i = 0; i < arr.length; i++) {
-                for (int j = 0; j < arr[i].length; j++) {
-                    CoordinateDay4 c = new CoordinateDay4(i, j);
+	static long day4Prob2() {
+    long countOverall = 0;
+    fillArr();
+    long removedThisIteration;
+    do {
+      removedThisIteration = 0;
+         for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                CoordinateDay4 c = new CoordinateDay4(i, j);
                     if (isRoll(c)) {
-                        if (isLessThan5Adjacant(c)) {
-                            countThisIteration++;
+                        if (isLessThan4Adjacant(c)) {
+                            countOverall++;
+                            removedThisIteration++;
                             arr[i][j] = 'X';
                         }
                     }
                 }
             }
-            if (isNotChanged(countThisIteration)) {
-                flag = true;
-            }
-        }
-        return countThisIteration;
+        }while(removedThisIteration !=0);
+        return countOverall;
     }
 
-    static boolean isNotChanged(long l) {
-        if (l == changed) return true;
-        else changed = l;
-        return false;
-    }
 
     static boolean isRoll(CoordinateDay4 c) {
         return arr[c.x()][c.y()] == '@';
@@ -103,3 +96,4 @@ public class Day4 {
         }
     }
 }
+

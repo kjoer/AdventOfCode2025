@@ -21,7 +21,7 @@ public class Day4 {
             for (int j = 0; j < arr[i].length; j++) {
                 CoordinateDay4 c = new CoordinateDay4(i, j);
                 if (isRoll(c)) {
-                    if (isLessThan5Adjacant(c)) {
+                    if (isLessThan4Adjacant(c)) {
                         count++;
                     }
                 }
@@ -58,7 +58,7 @@ public class Day4 {
         return arr[c.x()][c.y()] == '@';
     }
 
-    static boolean isLessThan5Adjacant(CoordinateDay4 c) {
+    static boolean isLessThan4Adjacant(CoordinateDay4 c) {
         int count = 0;
         int x = c.x();
         int y = c.y();
@@ -96,4 +96,5 @@ public class Day4 {
         }
     }
 }
+
 
